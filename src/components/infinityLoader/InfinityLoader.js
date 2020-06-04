@@ -1,7 +1,8 @@
 import React from "react";
 
+const _onscroll = window.onscroll;
+
 export const InfinityLoader = ({ onLoad }) => {
-  const _onscroll = window.onscroll;
   const ref = React.useRef();
   React.useEffect(() => {
     window.onscroll = () => {

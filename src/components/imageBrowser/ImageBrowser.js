@@ -11,7 +11,6 @@ export const ImageBrowser = () => {
   const [search, setSearch] = React.useState("");
   const [images, setImages] = React.useState([]);
   const [currentPage, setCurrentPage] = React.useState(1);
-  console.log(currentPage);
 
   const performFetchMoreImages = React.useCallback(async () => {
     const newImages = await fetchImages(currentPage);

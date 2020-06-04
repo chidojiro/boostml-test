@@ -16,6 +16,15 @@ export const fetchImages = async (page) => {
   return imagesResponse.hits;
 };
 
+export const fetchImageDetail = async (id) => {
+  const imagesResponse = await (
+    await fetch(
+      `https://pixabay.com/api?key=16837556-c2ce5f9d56364d11818c86ab3&id=${id}`
+    )
+  ).json();
+  return imagesResponse.hits[0];
+};
+
 export const searchForImages = async (keyword) => {
   const imagesResponse = await (
     await fetch(

@@ -7,6 +7,7 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from "../../redux/actionCreators";
+import { Link } from "react-router-dom";
 
 export const ImageThumbnail = ({ image }) => {
   const dispatch = useDispatch();
@@ -26,7 +27,9 @@ export const ImageThumbnail = ({ image }) => {
 
   return (
     <StyledImageThumbnail>
-      <img src={image.previewURL} alt="" />
+      <Link to={`image/${image.id}`}>
+        <img src={image.previewURL} alt="" />
+      </Link>
       <HeartFilled
         onClick={handleHeartClick}
         className={`${isFavorite ? "active" : ""}`}
