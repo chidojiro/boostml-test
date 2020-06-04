@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-function App() {
+import { ImageBrowser } from "./components/imageBrowser";
+import { FavoriteImages } from "./components/favoriteImages";
+import { StyledApp } from "./App.styled";
+import { loadFavoriteImages } from "./redux/actionCreators";
+
+import "antd/dist/antd.css";
+
+export const App = () => {
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(loadFavoriteImages());
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledApp>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={ImageBrowser} />
+          <Route path="/favorites" component={FavoriteImages} />
+        </Switch>
+      </BrowserRouter>
+    </StyledApp>
   );
-}
-
-export default App;
+};
